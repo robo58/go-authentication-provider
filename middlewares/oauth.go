@@ -18,6 +18,7 @@ func OauthRequired() gin.HandlerFunc {
 			admin := client.NewAPIClient(data.GetHydraConfig().Admin).AdminApi
 			exec, _, err := admin.IntrospectOAuth2Token(c).Token(token).Execute()
 			if err == nil && exec.GetActive() {
+				c.AddParam("user_id",exec.GetSub())
 				c.Next()
 				return
 			}

@@ -1,19 +1,17 @@
 [GIN-debug] Loaded HTML Templates (3): 
-	- 
 	- consent.tmpl
 	- login.tmpl
+	- 
 
 [GIN-debug] GET    /oauth/login              --> github.com/robo58/go-authentication-provider/actions/oauth.GetLogin (4 handlers)
 [GIN-debug] POST   /oauth/login              --> github.com/robo58/go-authentication-provider/actions/oauth.PostLogin (4 handlers)
 [GIN-debug] GET    /oauth/consent            --> github.com/robo58/go-authentication-provider/actions/oauth.GetConsent (4 handlers)
 [GIN-debug] POST   /oauth/consent            --> github.com/robo58/go-authentication-provider/actions/oauth.PostConsent (4 handlers)
-[GIN-debug] GET    /oauth/user               --> github.com/robo58/go-authentication-provider/actions/oauth.GetUser (4 handlers)
+[GIN-debug] GET    /oauth/user               --> github.com/robo58/go-authentication-provider/actions/oauth.GetUser (5 handlers)
 [GIN-debug] GET    /oauth/client/callback    --> github.com/robo58/go-authentication-provider/router.Callback (4 handlers)
 [GIN-debug] GET    /oauth/client/login       --> github.com/robo58/go-authentication-provider/router.Setup.func2 (4 handlers)
 [GIN-debug] GET    /test                     --> github.com/robo58/go-authentication-provider/router.Setup.func3 (5 handlers)
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :3000
-::1 - - [07/Jul/2022:19:43:57 +0200] "GET /test HTTP/1.1 200 13.933508ms " " PostmanRuntime/7.28.4" " "
-::1 - - [07/Jul/2022:19:44:02 +0200] "GET /test HTTP/1.1 401 3.342803ms " " PostmanRuntime/7.28.4" " "
-::1 - - [07/Jul/2022:19:44:05 +0200] "GET /test HTTP/1.1 200 1.976974ms " " PostmanRuntime/7.28.4" " "
+::1 - - [07/Jul/2022:20:34:06 +0200] "GET /oauth/user HTTP/1.1 200 96.070124ms " " PostmanRuntime/7.28.4" " "

@@ -68,7 +68,8 @@ func Setup() *gin.Engine {
 	app.POST("/oauth/login", oauth.PostLogin)
 	app.GET("/oauth/consent", oauth.GetConsent)
 	app.POST("/oauth/consent", oauth.PostConsent)
-	app.GET("/oauth/user", oauth.GetUser)
+
+	app.GET("/oauth/user",middlewares.OauthRequired() ,oauth.GetUser)
 
 
 	app.GET("/oauth/client/callback", Callback)
