@@ -1,9 +1,13 @@
+hydra:
+  AdminUrl: "http://localhost:4445"
+  PublicUrl: "http://localhost:4444"
+
 database:
   driver: "mysql"
-  dbname: "go_database"
+  dbname: "go-oauth"
   username: "root"
   password: ""
-  host: "db"
+  host: "localhost"
   port: "3306"
   max_lifetime: 7200
   max_open_conns: 150

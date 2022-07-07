@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/robo58/go-authentication-provider/config"
-	db "github.com/robo58/go-authentication-provider/data"
+	"github.com/robo58/go-authentication-provider/data"
 	"github.com/robo58/go-authentication-provider/router"
 )
 
 func setConfiguration(configPath string) {
 	config.Setup(configPath)
-	db.SetupDB()
+	data.SetupDB()
+	data.SetupHydra()
 	gin.SetMode(config.GetConfig().Server.Mode)
 }
 

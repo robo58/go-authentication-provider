@@ -1,0 +1,23 @@
+[GIN-debug] Loaded HTML Templates (3): 
+	- 
+	- consent.tmpl
+	- login.tmpl
+
+[GIN-debug] GET    /oauth/login              --> github.com/robo58/go-authentication-provider/actions/oauth.GetLogin (4 handlers)
+[GIN-debug] POST   /oauth/login              --> github.com/robo58/go-authentication-provider/actions/oauth.PostLogin (4 handlers)
+[GIN-debug] GET    /oauth/consent            --> github.com/robo58/go-authentication-provider/actions/oauth.GetConsent (4 handlers)
+[GIN-debug] POST   /oauth/consent            --> github.com/robo58/go-authentication-provider/actions/oauth.PostConsent (4 handlers)
+[GIN-debug] GET    /oauth/user               --> github.com/robo58/go-authentication-provider/actions/oauth.GetUser (4 handlers)
+[GIN-debug] GET    /api/test                 --> github.com/robo58/go-authentication-provider/router.Setup.func2 (4 handlers)
+[GIN-debug] GET    /api/test2                --> github.com/robo58/go-authentication-provider/router.Setup.func3 (4 handlers)
+[GIN-debug] GET    /oauth/client/callback    --> github.com/robo58/go-authentication-provider/router.Callback (4 handlers)
+[GIN-debug] GET    /oauth/client/login       --> github.com/robo58/go-authentication-provider/router.Setup.func4 (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :3000
+::1 - - [07/Jul/2022:18:42:14 +0200] "GET /oauth/client/login HTTP/1.1 302 49.99µs " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
+::1 - - [07/Jul/2022:18:42:14 +0200] "GET /oauth/login?login_challenge=a75d6a16fbd74bf98854a1a9b85a8ed1 HTTP/1.1 200 7.796568ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
+::1 - - [07/Jul/2022:18:42:20 +0200] "POST /oauth/login HTTP/1.1 302 22.318782ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
+::1 - - [07/Jul/2022:18:42:21 +0200] "GET /oauth/consent?consent_challenge=579df5bc7c2f4175bff97a82d845386d HTTP/1.1 200 3.632402ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
+::1 - - [07/Jul/2022:18:42:22 +0200] "POST /oauth/consent HTTP/1.1 302 16.995178ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
+::1 - - [07/Jul/2022:18:42:22 +0200] "GET /oauth/client/callback?code=aAGXyldUjLfa5dfUBePButbhWAJVt9OfaE6i9a1_Xf4.TUXCOjdu0dhFKjom2C1lbMFUco4793uD7ujkMoc2kHg&scope=users.write+users.read+users.edit+users.delete+offline&state=YLfvYbzRIO4MXUUgB98bYY085XA%2FuhOjDyfsR0OVekk%3D HTTP/1.1 200 218.227129ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "

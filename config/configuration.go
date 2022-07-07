@@ -10,6 +10,7 @@ var Config *Configuration
 type Configuration struct {
 	Server   ServerConfiguration
 	Database DatabaseConfiguration
+	Hydra   HydraConfiguration
 }
 
 type DatabaseConfiguration struct {
@@ -30,6 +31,11 @@ type ServerConfiguration struct {
 	Mode   string
 }
 
+type HydraConfiguration struct {
+	AdminUrl string
+	PublicUrl string
+}
+
 // Setup SetupDB initialize configuration
 func Setup(configPath string) {
 	var configuration *Configuration
@@ -45,7 +51,6 @@ func Setup(configPath string) {
 	if err != nil {
 		log.Fatalf("Unable to decode into struct, %v", err)
 	}
-
 	Config = configuration
 }
 
