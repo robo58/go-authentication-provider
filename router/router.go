@@ -4,6 +4,8 @@ import (
 	"crypto/rand"
 	"encoding/base64"
 	"fmt"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	"github.com/robo58/go-authentication-provider/actions/oauth"
 	"github.com/robo58/go-authentication-provider/middlewares"
@@ -34,9 +36,13 @@ var OAuthConf = &oauth2.Config{
 
 var stateStore = map[string]bool{}
 
-
 func Setup() *gin.Engine {
 	app := gin.New()
+
+	// sessions
+	store := cookie.NewStore([]byte("secret"))
+	store.Options(sessions.Options{MaxAge:   60 * 60 * 24, Path: "/"})
+	app.Use(sessions.Sessions("golang_session", store))
 
 	// Logging to a file.
 	f, _ := os.Create("log/api.log")
@@ -69,12 +75,10 @@ func Setup() *gin.Engine {
 	app.GET("/oauth/consent", oauth.GetConsent)
 	app.POST("/oauth/consent", oauth.PostConsent)
 
-	app.GET("/oauth/user",middlewares.OauthRequired() ,oauth.GetUser)
 
-
+	// OAuth 2.0 client callback and redirect
 	app.GET("/oauth/client/callback", Callback)
-
-	app.GET("/oauth/client/login", func(context *gin.Context) {
+	app.GET("/oauth/client/redirect", func(context *gin.Context) {
 		// Generate random state
 		b := make([]byte, 32)
 		_, err := rand.Read(b)
@@ -93,11 +97,13 @@ func Setup() *gin.Engine {
 	})
 
 
-	app.GET("/test",middlewares.OauthRequired() ,func(c *gin.Context) {
+	// OAuth 2.0 protected routes
+	app.GET("/test",middlewares.SessionRequired() ,func(c *gin.Context) {
 		c.JSON(200,gin.H{
 			"success": "adadadada",
 		})
 	})
+	app.GET("/oauth/user",middlewares.OauthRequired() ,oauth.GetUser)
 
 	return app
 }

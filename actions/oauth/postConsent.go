@@ -48,7 +48,6 @@ func PostConsent(c *gin.Context){
 	if acceptErr != nil {
 		str := fmt.Sprint("error AcceptConsentRequest", acceptErr.Error())
 		c.String(http.StatusUnprocessableEntity, str)
-
 	}
 
 	 c.Redirect(http.StatusFound, consentAcceptResp.GetRedirectTo())

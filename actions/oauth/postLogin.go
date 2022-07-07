@@ -2,11 +2,13 @@ package oauth
 
 import (
 	"fmt"
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	client "github.com/ory/hydra-client-go"
 	db "github.com/robo58/go-authentication-provider/data"
 	"github.com/robo58/go-authentication-provider/data/models/users"
 	"golang.org/x/crypto/bcrypt"
+	"log"
 	"net/http"
 )
 
@@ -66,6 +68,12 @@ func PostLogin(c *gin.Context)  {
 		c.String(http.StatusUnprocessableEntity, str)
 	}
 
+	log.Println("Login Request Accepted, creating session for user: ", subject)
+	session := sessions.Default(c)
+	session.Set("user", subject)
+	if err := session.Save(); err != nil {
+		log.Println("Error saving session: ", err)
+	}
 
 	// If success, it will redirect to consent page using handler GetConsent
 	// It then show the consent form

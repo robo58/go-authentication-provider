@@ -1,9 +1,11 @@
 package oauth
 
 import (
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	client "github.com/ory/hydra-client-go"
 	"github.com/robo58/go-authentication-provider/data"
+	"log"
 	"net/http"
 	"strings"
 )
@@ -36,6 +38,13 @@ func GetLogin(c *gin.Context)  {
 				"ErrorContent": err.Error(),
 			})
 		}
+		log.Println("Login Request Accepted, creating session for user: ", exec.GetSubject())
+		session := sessions.Default(c)
+		session.Set("user", exec.GetSubject())
+		if err := session.Save(); err != nil {
+			log.Println("Error saving session: ", err)
+		}
+		log.Println(session.Get("user"))
 		// If success, it will redirect to consent page using handler GetConsent
 		// It then show the consent form
 		c.Redirect(http.StatusFound, execute.GetRedirectTo())
