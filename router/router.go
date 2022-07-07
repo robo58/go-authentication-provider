@@ -91,6 +91,13 @@ func Setup() *gin.Engine {
 		context.Redirect(http.StatusFound, loginURL)
 	})
 
+
+	app.GET("/test",middlewares.OauthRequired() ,func(c *gin.Context) {
+		c.JSON(200,gin.H{
+			"success": "adadadada",
+		})
+	})
+
 	return app
 }
 
