@@ -1,19 +1,25 @@
 package main
 
 import (
-	"io"
-	"log"
-	"net/http"
+	"fmt"
+	"github.com/gin-gonic/gin"
+	"github.com/robo58/go-authentication-provider/config"
+	db "github.com/robo58/go-authentication-provider/data"
+	"github.com/robo58/go-authentication-provider/router"
 )
 
+func setConfiguration(configPath string) {
+	config.Setup(configPath)
+	db.SetupDB()
+	gin.SetMode(config.GetConfig().Server.Mode)
+}
+
 func main() {
-	// Hello world, the web server
-
-	helloHandler := func(w http.ResponseWriter, req *http.Request) {
-		io.WriteString(w, "Hello, world!\n")
-	}
-
-	http.HandleFunc("/hello", helloHandler)
-    log.Println("Listing for requests at http://localhost:8000/hello")
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	configPath := "./config.yml"
+	setConfiguration(configPath)
+	conf := config.GetConfig()
+	web := router.Setup()
+	fmt.Println("Go API REST Running on port " + conf.Server.Port)
+	fmt.Println("==================>")
+	_ = web.Run(":" + conf.Server.Port)
 }
