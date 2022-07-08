@@ -41,6 +41,7 @@ func GetLogin(c *gin.Context)  {
 		log.Println("Login Request Accepted, creating session for user: ", exec.GetSubject())
 		session := sessions.Default(c)
 		session.Set("user", exec.GetSubject())
+		session.Set("remember", exec.GetSkip())
 		if err := session.Save(); err != nil {
 			log.Println("Error saving session: ", err)
 		}

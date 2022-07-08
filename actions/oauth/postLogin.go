@@ -49,7 +49,6 @@ func PostLogin(c *gin.Context)  {
 
 	// Using Hydra Admin to accept login request!
 	loginGetParam := hydra.AdminApi.GetLoginRequest(c).LoginChallenge(formData.LoginChallenge)
-
 	_, _, execError := loginGetParam.Execute()
 	if execError != nil {
 		// if error, redirects to ...
@@ -71,6 +70,7 @@ func PostLogin(c *gin.Context)  {
 	log.Println("Login Request Accepted, creating session for user: ", subject)
 	session := sessions.Default(c)
 	session.Set("user", subject)
+	session.Set("remember", rememberMe)
 	if err := session.Save(); err != nil {
 		log.Println("Error saving session: ", err)
 	}
