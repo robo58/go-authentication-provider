@@ -1,7 +1,7 @@
 [GIN-debug] Loaded HTML Templates (3): 
-	- 
 	- consent.tmpl
 	- login.tmpl
+	- 
 
 [GIN-debug] GET    /oauth/login              --> github.com/robo58/go-authentication-provider/actions/oauth.GetLogin (5 handlers)
 [GIN-debug] POST   /oauth/login              --> github.com/robo58/go-authentication-provider/actions/oauth.PostLogin (5 handlers)
@@ -15,9 +15,3 @@
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :3000
-::1 - - [08/Jul/2022:12:10:40 +0200] "GET /oauth/client/redirect HTTP/1.1 302 54.348µs " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-[GIN-debug] [WARNING] Headers were already written. Wanted to override status code 302 with 200
-::1 - - [08/Jul/2022:12:10:40 +0200] "GET /oauth/login?login_challenge=0cf4d8d3bf734da288bca4be8078d324 HTTP/1.1 200 20.454583ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [08/Jul/2022:12:10:40 +0200] "GET /oauth/consent?consent_challenge=0c8f2a5a0e8c46888a195a75c83db1da HTTP/1.1 200 2.733911ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [08/Jul/2022:12:10:42 +0200] "POST /oauth/consent HTTP/1.1 302 23.112314ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [08/Jul/2022:12:10:42 +0200] "GET /oauth/client/callback?code=nf84F0tPN_PdTcuDg0Cd1WYMG_IVxRGTRDvHx7pw8zk.zOAUl9M5-FywbuYfBz-ixl_0qTCrQD5XNc4y0JNHfvI&scope=users.write+users.read+users.edit+users.delete+offline+openid&state=B9%2Bhv%2BTZd%2FqfO96nR%2F4Ya72MK1dc6ugAJOGJ43nTYPY%3D HTTP/1.1 200 118.94887ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "

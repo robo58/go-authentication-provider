@@ -1,12 +1,11 @@
-package users
+package models
 
-import (
-	"github.com/robo58/go-authentication-provider/data/models"
-)
+import "github.com/jinzhu/gorm"
 
 type User struct {
-	models.Base
+	gorm.Model
 	Name        string `json:"name"`
 	Email       string `json:"email"`
 	Password    string `json:"password"`
+	Roles []Role       `json:"roles" gorm:"many2many:role_users;"`
 }

@@ -5,7 +5,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"github.com/robo58/go-authentication-provider/config"
-	"github.com/robo58/go-authentication-provider/data/models/users"
+	"github.com/robo58/go-authentication-provider/data/models"
 	"time"
 )
 
@@ -59,7 +59,15 @@ func SetupDB() {
 
 // Auto migrate project models
 func migration() {
-	DB.AutoMigrate(&users.User{})
+	DB.AutoMigrate(&models.StudentDepartmentSubject{})
+	DB.AutoMigrate(&models.RoleUser{})
+	DB.AutoMigrate(&models.DepartmentSubject{})
+	DB.AutoMigrate(&models.DepartmentStudent{})
+	DB.AutoMigrate(&models.School{})
+	DB.AutoMigrate(&models.Role{})
+	DB.AutoMigrate(&models.User{})
+	DB.AutoMigrate(&models.Subject{})
+	DB.AutoMigrate(&models.Department{})
 }
 
 func GetDB() *gorm.DB {

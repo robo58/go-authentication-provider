@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	client "github.com/ory/hydra-client-go"
 	db "github.com/robo58/go-authentication-provider/data"
-	"github.com/robo58/go-authentication-provider/data/models/users"
+	"github.com/robo58/go-authentication-provider/data/models"
 	"golang.org/x/crypto/bcrypt"
 	"log"
 	"net/http"
@@ -33,10 +33,10 @@ func PostLogin(c *gin.Context)  {
 	var rememberMe = formData.RememberMe == "true"
     // get user
 	data := db.GetDB()
-	var user users.User
+	var user models.User
 
 	// check mail and password
-	data.Where(&users.User{Email: formData.Email}).First(&user)
+	data.Where(&models.User{Email: formData.Email}).First(&user)
 
 	passErr := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(formData.Password))
 	if passErr != nil {

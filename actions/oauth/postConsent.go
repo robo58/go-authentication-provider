@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	client "github.com/ory/hydra-client-go"
 	"github.com/robo58/go-authentication-provider/data"
-	"github.com/robo58/go-authentication-provider/data/models/users"
+	"github.com/robo58/go-authentication-provider/data/models"
 	"net/http"
 )
 
@@ -24,7 +24,7 @@ func PostConsent(c *gin.Context){
 			"error": "Failed to bind form data",
 		})
 	}
-	var user users.User
+	var user models.User
 	session := sessions.Default(c)
 	data.GetDB().First(&user, session.Get("user"))
 	admin := client.NewAPIClient(data.GetHydraConfig().Admin).AdminApi
