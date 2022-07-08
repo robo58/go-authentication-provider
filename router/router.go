@@ -8,6 +8,7 @@ import (
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	"github.com/robo58/go-authentication-provider/actions/oauth"
+	"github.com/robo58/go-authentication-provider/actions/schools"
 	"github.com/robo58/go-authentication-provider/middlewares"
 	"golang.org/x/oauth2"
 	"io"
@@ -70,6 +71,8 @@ func Setup() *gin.Engine {
 	app.NoRoute(middlewares.NoRouteHandler())
 
 	app.LoadHTMLGlob("views/*")
+
+	app.GET("/api/schools", schools.GetSchools)
 
 	//// Routes
 	app.GET("/oauth/login", oauth.GetLogin)
