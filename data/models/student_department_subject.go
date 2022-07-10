@@ -7,6 +7,6 @@ type StudentDepartmentSubject struct {
 	DepartmentStudentId int `json:"department_student_id" gorm:"primaryKey"`
 	DepartmentSubjectId int `json:"department_subject_id" gorm:"primaryKey"`
 	Grade int `json:"grade"`
-	DepartmentStudent DepartmentStudent `json:"department_student" gorm:"foreignKey:DepartmentStudentId;"`
-	DepartmentSubject DepartmentSubject `json:"department_subject" gorm:"foreignKey:DepartmentSubjectId;"`
+	DepartmentStudent *DepartmentStudent `json:"department_student,omitempty" gorm:"foreignKey:DepartmentStudentId;"`
+	DepartmentSubject *DepartmentSubject `json:"department_subject,omitempty" gorm:"foreignKey:DepartmentSubjectId;"`
 }

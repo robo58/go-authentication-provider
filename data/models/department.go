@@ -7,8 +7,8 @@ type Department struct {
 	Name              string             `json:"name"`
 	SchoolId int `json:"school_id"`
 	HeadroomTeacherId int                `json:"headroom_teacher_id"`
-	School            School             `gorm:"foreignKey:SchoolId;"`
-	HeadroomTeacher   User               `gorm:"foreignKey:HeadroomTeacherId;"`
-	Subjects          []Subject `json:"subjects" gorm:"many2many:department_subjects;"`
-	Students          []User `json:"students" gorm:"many2many:department_students;"`
+	School            *School             `json:"school,omitempty" gorm:"foreignKey:SchoolId;"`
+	HeadroomTeacher   *User               `json:"headroom_teacher,omitempty;" gorm:"foreignKey:HeadroomTeacherId;"`
+	Subjects          []*Subject `json:"subjects,omitempty" gorm:"many2many:department_subjects;"`
+	Students          []*User `json:"students,omitempty" gorm:"many2many:department_students;"`
 }

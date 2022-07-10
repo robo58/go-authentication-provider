@@ -6,6 +6,6 @@ type Subject struct {
 	gorm.Model
 	Name        string       `json:"name"`
 	TeacherId   int          `json:"teacher_id"`
-	Teacher     User         `gorm:"foreignKey:TeacherId;"`
-	Departments []Department `json:"departments" gorm:"many2many:department_subjects;"`
+	Teacher     *User         `json:"teacher,omitempty" gorm:"foreignKey:TeacherId;"`
+	Departments []*Department `json:"departments,omitempty" gorm:"many2many:department_subjects;"`
 }

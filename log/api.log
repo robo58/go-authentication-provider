@@ -16,13 +16,4 @@
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :3000
-::1 - - [10/Jul/2022:15:55:32 +0200] "GET /oauth/user HTTP/1.1 200 10.221912ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [10/Jul/2022:15:55:40 +0200] "GET /oauth/user HTTP/1.1 401 81.183µs " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [10/Jul/2022:15:55:42 +0200] "GET /oauth/client/redirect HTTP/1.1 302 46.775µs " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [10/Jul/2022:15:55:42 +0200] "GET /oauth/login?login_challenge=b2478a303b6e4cea88788614af1d23a9 HTTP/1.1 200 1.583091ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [10/Jul/2022:15:55:49 +0200] "POST /oauth/login HTTP/1.1 302 16.612034ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [10/Jul/2022:15:55:49 +0200] "GET /oauth/consent?consent_challenge=efd473042fbf431d8861d075061204df HTTP/1.1 200 4.011092ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [10/Jul/2022:15:55:50 +0200] "POST /oauth/consent HTTP/1.1 302 11.375915ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [10/Jul/2022:15:55:50 +0200] "GET /oauth/client/callback?code=dS1x4EEjBanVlP6X3NBvwGQgpvyuOVyhvl15cHNUTX4.LRDIqBNejxKur5_0_Yud4-nBL_mF_InrO1jQQZ8HUYU&scope=users.write+users.read+users.edit+users.delete+offline+openid&state=CMlKKwNXDkYeILDfdSmTjgz4C1SmWZjJW8yWexgOJ%2Fw%3D HTTP/1.1 200 117.746072ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [10/Jul/2022:15:55:54 +0200] "GET /oauth/user HTTP/1.1 200 7.740931ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
-::1 - - [10/Jul/2022:15:56:38 +0200] "GET /oauth/user HTTP/1.1 200 4.731722ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
+::1 - - [10/Jul/2022:16:18:31 +0200] "GET /api/schools HTTP/1.1 200 38.225497ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
