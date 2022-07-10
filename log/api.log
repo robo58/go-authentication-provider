@@ -16,4 +16,5 @@
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :3000
-::1 - - [10/Jul/2022:16:18:31 +0200] "GET /api/schools HTTP/1.1 200 38.225497ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
+::1 - - [10/Jul/2022:17:59:36 +0200] "GET /api/schools HTTP/1.1 200 30.724828ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "
+::1 - - [10/Jul/2022:17:59:41 +0200] "GET /api/schools HTTP/1.1 200 48.291623ms " " Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36" " "

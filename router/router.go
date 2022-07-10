@@ -94,6 +94,13 @@ func Setup() *gin.Engine {
 
 		state := base64.StdEncoding.EncodeToString(b)
 
+		session := sessions.Default(context)
+		session.Set("redirect_to", context.Query("redirect_to"))
+		err = session.Save()
+		if err != nil {
+			fmt.Println("Error while saving session")
+		}
+
 		stateStore[state] = true
 
 		// Will return loginURL,
@@ -152,9 +159,14 @@ func CallbackOauth(c *gin.Context) {
 	if err != nil {
 		c.String(http.StatusOK, "Error while saving session")
 	}
-	 c.JSON(http.StatusOK, gin.H{
-		"AccessToken": accessToken,
-	})
+	redirectTo := session.Get("redirect_to")
+	if redirectTo != nil {
+		c.Redirect(http.StatusFound, redirectTo.(string))
+	}else{
+		c.JSON(http.StatusOK, gin.H{
+			"AccessToken": accessToken,
+		})
+	}
 }
 func CallbackOpenId(c *gin.Context) {
 
@@ -196,10 +208,15 @@ func CallbackOpenId(c *gin.Context) {
 	if err != nil {
 		c.String(http.StatusOK, "Error while saving session")
 	}
-	 c.JSON(http.StatusOK, gin.H{
-		"AccessToken": accessToken,
-		"IDToken": idToken,
-	})
+	redirectTo := session.Get("redirect_to")
+	if redirectTo != nil {
+		c.Redirect(http.StatusFound, redirectTo.(string))
+	}else{
+		c.JSON(http.StatusOK, gin.H{
+			"AccessToken": accessToken,
+			"IDToken": idToken,
+		})
+	}
 }
 
 

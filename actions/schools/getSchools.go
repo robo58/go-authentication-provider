@@ -9,6 +9,8 @@ import (
 func GetSchools(c *gin.Context){
 	db := data.GetDB()
 	var schools []models.School
-	db.Preload("Headmaster.Roles").Preload("Departments.HeadroomTeacher").Preload("Departments.Subjects").Preload("Departments.Students").Find(&schools)
-	c.JSON(200, schools)
+	db.Preload("Headmaster.Roles").Preload("Departments.HeadroomTeacher").Preload("Departments.Subjects.Teacher").Preload("Departments.Students.Subjects").Find(&schools)
+	c.JSON(200, gin.H{
+		"schools": schools,
+	})
 }
