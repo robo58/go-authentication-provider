@@ -11,6 +11,9 @@ func GetUser(c *gin.Context) {
 	var user models.User
 	data.GetDB().First(&user, c.Query("user_id"))
 
-	c.JSON(http.StatusOK, user)
+	c.JSON(http.StatusOK, gin.H{
+		"user": user,
+		"token": c.GetHeader("authorization"),
+	})
 }
 
