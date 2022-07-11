@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	client "github.com/ory/hydra-client-go"
 	"github.com/robo58/go-authentication-provider/data"
+	"github.com/robo58/go-authentication-provider/helpers"
 	"log"
 	"net/http"
 	"strings"
@@ -57,7 +58,7 @@ func ScopesRequired(scopes []string) gin.HandlerFunc  {
 				arrayScopes := strings.Split(sessionScope.(string), " ")
 				var missingScopes []string
 				for _, scope := range scopes {
-					if !contains(arrayScopes, scope) {
+					if !helpers.Contains(arrayScopes, scope) {
 						missingScopes = append(missingScopes, scope)
 					}
 				}
@@ -72,13 +73,4 @@ func ScopesRequired(scopes []string) gin.HandlerFunc  {
 		}
 		c.Next()
 	}
-}
-
-func contains(s []string, e string) bool {
-	for _, a := range s {
-		if a == e {
-			return true
-		}
-	}
-	return false
 }

@@ -193,8 +193,8 @@ func All() []Seeder {
 		{
 			Name: "AssignSubjectsToDepartments",
 			Run: func(db *gorm.DB) error {
-				var subjects1 []models.Subject
-				var subjects2 []models.Subject
+				var subjects1 []*models.Subject
+				var subjects2 []*models.Subject
 				var department1 models.Department
 				var department2 models.Department
 				db.Where([]int{1,2,3}).Find(&subjects1)
@@ -211,8 +211,8 @@ func All() []Seeder {
 		{
 			Name: "AssignStudentsToDepartments",
 			Run: func(db *gorm.DB) error {
-				var students1 []models.User
-				var students2 []models.User
+				var students1 []*models.User
+				var students2 []*models.User
 				var department1 models.Department
 				var department2 models.Department
 				err := db.Where([]int{5, 6}).Find(&students1).Error
@@ -223,17 +223,23 @@ func All() []Seeder {
 				if err != nil {
 					return err
 				}
-				err = db.First(&department1, 1).Error
+				var departmentStudents1 []*models.DepartmentStudent
+				var departmentStudents2 []*models.DepartmentStudent
+				for _, student := range students1 {
+					departmentStudents1 = append(departmentStudents1, &models.DepartmentStudent{UserId: int(student.ID)})
+				}
+				for _, student := range students2 {
+					departmentStudents2 = append(departmentStudents2, &models.DepartmentStudent{UserId: int(student.ID)})
+				}
+				err = db.First(&department1, 1).Association("Students").Append(departmentStudents1).Error
 				if err != nil {
 					return err
 				}
-				err = db.First(&department2, 2).Error
+				err = db.First(&department2, 2).Association("Students").Append(departmentStudents2).Error
 				if err != nil {
 					return err
 				}
 
-				department1.Students = students1
-				department2.Students = students2
 				err = db.Save(&department1).Error
 				if err != nil {
 					return err
@@ -248,10 +254,10 @@ func All() []Seeder {
 		{
 			Name: "AssignSubjectsToStudents",
 			Run: func(db *gorm.DB) error {
-				var subjects1 []models.DepartmentSubject
-				var subjects2 []models.DepartmentSubject
-				var students1 []models.DepartmentStudent
-				var students2 []models.DepartmentStudent
+				var subjects1 []*models.DepartmentSubject
+				var subjects2 []*models.DepartmentSubject
+				var students1 []*models.DepartmentStudent
+				var students2 []*models.DepartmentStudent
 				var department1 models.Department
 				var department2 models.Department
 				db.First(&department1, 1)

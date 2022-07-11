@@ -8,6 +8,7 @@ type User struct {
 	Email       string `json:"email"`
 	Password    string `json:"password"`
 	Roles 		[]*Role `json:"roles,omitempty" gorm:"many2many:role_users;"`
+	Subjects 	[]*StudentDepartmentSubject `json:"subjects,omitempty" gorm:"polymorphic:User;"`
 }
 
 type ResourceUser struct {

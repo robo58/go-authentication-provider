@@ -10,5 +10,5 @@ type Department struct {
 	School            *School             `json:"school,omitempty" gorm:"foreignKey:SchoolId;"`
 	HeadroomTeacher   *User               `json:"headroom_teacher,omitempty;" gorm:"foreignKey:HeadroomTeacherId;"`
 	Subjects          []*Subject `json:"subjects,omitempty" gorm:"many2many:department_subjects;"`
-	Students          []*User `json:"students,omitempty" gorm:"many2many:department_students;"`
+	Students          []*DepartmentStudent `json:"students,omitempty" gorm:"foreignKey:DepartmentId;"`
 }

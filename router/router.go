@@ -33,7 +33,7 @@ var OAuthConf = &oauth2.Config{
 	// https://github.com/coreos/go-oidc/blob/v3/oidc/oidc.go#L23-L36
 	// offline scope for requesting Refresh Token
 	// openid for Open ID Connect
-	Scopes:   []string{"users.write", "users.read", "users.edit", "users.delete", "offline", "openid"},
+	Scopes:   []string{"schools.read","departments.read","subjects.read","students.read","userinfo","offline", "openid"},
 	Endpoint: Endpoint,
 }
 
@@ -72,7 +72,9 @@ func Setup() *gin.Engine {
 
 	app.LoadHTMLGlob("views/*")
 
-	app.GET("/api/schools", schools.GetSchools)
+	app.GET("/api/schools",middlewares.GetTokenFromSession(),middlewares.AccessTokenRequired(),middlewares.ScopesRequired([]string{
+		"schools.read",
+	}), schools.GetSchools)
 
 	//// Routes
 	app.GET("/oauth/login", oauth.GetLogin)
@@ -116,7 +118,7 @@ func Setup() *gin.Engine {
 			"success": "adadadada",
 		})
 	})
-	app.GET("/oauth/user",middlewares.GetTokenFromSession(), middlewares.AccessTokenRequired(),middlewares.ScopesRequired([]string{"users.read"}), oauth.GetUser)
+	app.GET("/oauth/user",middlewares.GetTokenFromSession(), middlewares.AccessTokenRequired(),middlewares.ScopesRequired([]string{"userinfo"}), oauth.GetUser)
 
 	// openId routes
 	app.GET("/openid/client/callback", CallbackOpenId)
