@@ -22,6 +22,7 @@ func GetSchools(c *gin.Context){
 	}
 	if helpers.Contains(scopes, "students.read") {
 		db = db.Preload("Departments.Students.Subjects.Subject.Teacher")
+		db = db.Preload("Departments.Students.Student")
 	}
 	db.Find(&schools)
 	c.JSON(200, gin.H{
