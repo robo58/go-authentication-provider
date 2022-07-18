@@ -8,7 +8,7 @@ build:
 	go build -o bin/restapi main.go
 
 run:
-	go run main.go
+	REDIRECT_URL="http://localhost:3000/oauth/client/callback" CLIENT_ID="schoolinfoclient" CLIENT_SECRET="schoolinfosecret" go run main.go
 
 test:
 	go test -v ./test/...
