@@ -197,7 +197,7 @@ func CallbackOpenId(c *gin.Context) {
 	// Extract the ID Token from OAuth2 token.
 	idToken, ok := accessToken.Extra("id_token").(string)
 	if !ok {
-		c.String(http.StatusOK, "Missing id token")
+		//c.String(http.StatusOK, "Missing id token")
 	}
 	fmt.Println(idToken)
 	session := sessions.Default(c)
